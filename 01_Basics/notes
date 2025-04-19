@@ -1,0 +1,74 @@
+🔍 var vs let vs const in JavaScript
+
+Scope:
+
+var ➝ Function-scoped
+
+let ➝ Block-scoped (within {})
+
+const ➝ Block-scoped (within {})
+
+Hoisting:
+
+var ➝ Hoisted and initialized as undefined
+
+let ➝ Hoisted but NOT initialized (accessing before declaration throws ReferenceError)
+
+const ➝ Hoisted but NOT initialized (accessing before declaration throws ReferenceError)
+
+Reassignment:
+
+var ➝ Allowed ✅
+
+let ➝ Allowed ✅
+
+const ➝ Not allowed ❌ (you can't reassign it)
+
+Redeclaration:
+
+var ➝ Allowed ✅
+
+let ➝ Not allowed ❌
+
+const ➝ Not allowed ❌
+
+Use Case:
+
+var ➝ Old/legacy JavaScript code (not recommended)
+
+let ➝ Use when the value needs to change
+
+const ➝ Use when the value should not change (best practice)
+
+
+// var is function-scoped
+    function demoVar() {
+        if (true) {
+          var x = 10;
+        }
+        console.log(x); // ✅ Works because x is function-scoped
+      }
+      demoVar();
+
+// let is block-scoped
+    function demoLet() {
+        if (true) {
+        let y = 20;
+        }
+        console.log(y); // ❌ Error: y is not accessible outside the block
+    }
+    demoLet();
+
+// const can't be reassigned
+    const PI = 3.1416;
+    PI = 3.14; // ❌ Error: Cannot reassign a const variable
+
+// const allows mutation of objects
+    const user = { name: "Harsha" };
+    user.name = "Sree"; // ✅ Allowed (you’re not reassigning, just changing a property)
+
+
+🧠 Summary:
+Use let when the value will change.    
+Use const for values that stay constant (default choice).
+Avoid var — it's old school and may cause bugs due to function scope.
