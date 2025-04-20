@@ -67,3 +67,81 @@ Summary Table
 | false         | 0        | false     | "false"       |
 | 0             | 0        | false     | "0"           |
 | 1             | 1        | true      | "1"           |
+
+
+JavaScript Type Coercion in Expressions
+=======================================
+
+console.log("1" + 2);      // Output: "12"
+console.log(1 + "2");      // Output: "12"
+console.log("1" + 2 + 2);  // Output: "122"
+console.log(1 + 2 + "2");  // Output: "32"
+
+Explanation:
+------------
+
+1. "1" + 2
+- "1" is a string.
+- 2 is coerced to "2".
+- Result: "1" + "2" = "12"
+
+2. 1 + "2"
+- 1 is coerced to "1".
+- Result: "1" + "2" = "12"
+
+3. "1" + 2 + 2
+- "1" + 2 = "12"
+- "12" + 2 = "122"
+- Final result: "122"
+
+4. 1 + 2 + "2"
+- 1 + 2 = 3
+- 3 + "2" = "32"
+- Final result: "32"
+
+Note:
+- JavaScript evaluates expressions from left to right.
+- If any operand is a string and + is used, it concatenates as a string.
+
+
+console.log(true);
+console.log(+true);
+Unary Plus Operator in JavaScript
+=================================
+
+console.log(+true);   // Output: 1
+console.log(+false);  // Output: 0
+
+Explanation:
+------------
+- The unary plus operator (+) is used to convert values to numbers.
+- true  => 1
+- false => 0
+
+This is a shorthand trick for type conversion to number.
+
+
+
+console.log(true+);
+Invalid JavaScript Expression: console.log(true+)
+===============================================
+
+Code:
+-----
+console.log(true+)
+
+Output:
+-------
+Uncaught SyntaxError: Unexpected token ')'
+
+Explanation:
+------------
+- The '+' operator needs two values (operands).
+- Writing 'true +' without a second value is incomplete.
+- When used inside console.log, it causes a SyntaxError.
+- JavaScript sees: true + ) ← and this is invalid.
+
+Correct Examples:
+-----------------
+console.log(true + 1);      // 2
+console.log(true + false);  // 1
