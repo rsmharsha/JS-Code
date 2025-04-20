@@ -1,0 +1,48 @@
+JavaScript Comparison and Equality Notes
+========================================
+
+String to Number Comparisons
+----------------------------
+console.log("2" > 1);     // true
+"2" > 1 → "2" is converted to number → 2 > 1 → ✅ true
+console.log("02" > 1);    // true
+"02" > 1 → "02" → 2 > 1 → ✅ true
+
+- Strings are converted to numbers during comparison.
+
+null Comparisons
+----------------
+console.log(null > 0);    // false
+null is converted to 0 in comparisons, but not consistently
+
+console.log(null == 0);   // false
+null only equals undefined, not 0
+
+console.log(null >= 0);   // true
+Internally, null becomes 0, so 0 >= 0 → ✅ true
+
+- the reason is that an equality check == and comparisions (( > < >= <= )) work differently. 
+- comparisions convert null to a number, treating it as 0.
+- That is why null >=0 is true and null > 0 is false.  
+- null is converted to 0 only in >= and <= comparisons.
+- null == 0 is false because null only loosely equals undefined.
+
+undefined Comparisons
+---------------------
+console.log(undefined == 0);  // false
+console.log(undefined > 0);   // false
+console.log(undefined < 0);   // false
+
+- undefined is not equal to or comparable with numbers.
+
+Strict Equality
+---------------
+console.log("2" === 2);   // false
+
+- === checks both value and type.
+- "2" is a string, 2 is a number → not strictly equal.
+
+Conclusion:
+-----------
+- Use === for precise checks.
+- Be careful with null and undefined in comparisons.
