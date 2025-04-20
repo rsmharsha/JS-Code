@@ -1,0 +1,77 @@
+JavaScript typeof Operator
+==========================
+
+The typeof operator returns a string indicating the type of a given value.
+
+| Type of Value                          | typeof Result   |
+|---------------------------------------|------------------|
+| undefined                              | "undefined"      |
+| null                                   | "object"         | ← legacy bug
+| Boolean (true/false)                   | "boolean"        |
+| Number (1, NaN, Infinity)              | "number"         |
+| String ("hello")                       | "string"         |
+| Object (plain object, array, date)     | "object"         |
+| Function (can be called)               | "function"       |
+| Host object (non-callable, e.g. alert) | Implementation-defined (but not "undefined", "boolean", "number", or "string")
+
+Examples:
+---------
+typeof undefined    → "undefined"
+typeof null         → "object"
+typeof true         → "boolean"
+typeof 42           → "number"
+typeof "JS"         → "string"
+typeof {}           → "object"
+typeof []           → "object"
+typeof function(){} → "function"
+typeof alert        → "function" (depends on browser)
+
+Note:
+-----
+- typeof null === "object" is a known legacy bug.
+- Arrays and dates are both objects in typeof.
+- Functions return "function" because they implement [[Call]].
+- Host objects can return various results but are restricted by the spec.
+
+Use typeof to safely check variable types in JavaScript.
+
+Understanding [[Call]] in JavaScript
+====================================
+
+What is [[Call]]?
+-----------------
+- [[Call]] is an internal JavaScript method that allows a value to be called like a function.
+- If a value has [[Call]], it can be invoked using ().
+
+Example:
+--------
+function sayHi() {
+  console.log("Hi");
+}
+sayHi();  // Works because sayHi has [[Call]]
+
+Host Objects and typeof:
+-------------------------
+- Host objects are provided by the environment (e.g., browser).
+- Examples: window, document, alert
+
+Line:
+-----
+"If the host object does not implement [[Call]], the return value of typeof is implementation-defined."
+
+Meaning:
+--------
+- If a host object cannot be called (no [[Call]]), typeof might return different values in different JavaScript engines.
+- The result must not be: "undefined", "boolean", "number", or "string".
+
+Examples:
+---------
+typeof alert    // "function" (because it has [[Call]])
+typeof window   // "object" (no [[Call]])
+
+Conclusion:
+-----------
+- [[Call]] allows function-like behavior.
+- typeof returns "function" only if the object has [[Call]].
+- For non-callable host objects, typeof result varies depending on the JS engine.
+
