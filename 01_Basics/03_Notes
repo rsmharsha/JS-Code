@@ -1,0 +1,69 @@
+JavaScript Type Conversion - Notes
+==================================
+
+1. typeof Operator
+------------------
+let score = "49abc";
+console.log(typeof score); // "string"
+
+- typeof returns the data type of a variable.
+- "49abc" is a string.
+
+2. Conversion to Number
+------------------------
+let valueInNumber = Number(score);      // "49abc" => NaN
+let valueInNumber2 = Number(undefined); // undefined => NaN
+
+Conversion Examples:
+- "33"     => 33
+- "33abc"  => NaN
+- true     => 1
+- false    => 0
+- undefined => NaN
+- null     => 0
+
+console.log(valueInNumber);      // NaN
+console.log(valueInNumber2);     // NaN
+console.log(typeof valueInNumber);  // number
+console.log(typeof valueInNumber2); // number
+
+Note: NaN is still of type "number".
+
+3. Conversion to Boolean
+-------------------------
+let isLoggedIn = 1;
+let booleanIsLoggedIn = Boolean(isLoggedIn);
+console.log(booleanIsLoggedIn); // true
+
+Truthy values:
+- Any non-zero number
+- Non-empty strings
+- [], {}
+
+Falsy values:
+- 0
+- "" (empty string)
+- undefined
+- null
+- NaN
+- false
+
+4. Conversion to String
+------------------------
+let someNumber = 23;
+let stringNumber = String(someNumber);
+console.log(stringNumber);        // "23"
+console.log(typeof stringNumber); // "string"
+
+Summary Table
+=============
+| Value         | Number() | Boolean() | String()      |
+|---------------|----------|-----------|---------------|
+| "33"          | 33       | true      | "33"          |
+| "33abc"       | NaN      | true      | "33abc"       |
+| undefined     | NaN      | false     | "undefined"   |
+| null          | 0        | false     | "null"        |
+| true          | 1        | true      | "true"        |
+| false         | 0        | false     | "false"       |
+| 0             | 0        | false     | "0"           |
+| 1             | 1        | true      | "1"           |
