@@ -31,3 +31,8 @@ let myFunc = function (){
     console.log("Iam Ironman");
 }
 
+
+// Stack(Primitive)
+// Heap(Non primitive)
+
+let name = "star-lord"
