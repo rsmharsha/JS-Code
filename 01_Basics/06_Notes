@@ -1,0 +1,76 @@
+JavaScript String Methods & Properties
+======================================
+
+String Declaration:
+-------------------
+const firstName = "star";
+const lastName = "lord";
+const fullName = firstName + "-" + lastName;
+console.log(fullName);  // Output: "star-lord"
+
+String Object:
+--------------
+const devName = new String("star-lord");
+console.log(devName);   // Output: [String: 'star-lord']
+
+Accessing Characters:
+---------------------
+console.log(devName[0]);        // Output: 's'
+console.log(devName.__proto__); // Shows String prototype methods
+
+String Properties & Methods:
+----------------------------
+console.log(devName.length);        // Output: 9
+console.log(devName.toUpperCase()); // Output: "STAR-LORD"
+console.log(devName);               // Original remains: [String: 'star-lord']
+console.log(devName.indexOf('l'));  // Output: 5 (first occurrence of 'l')
+
+Important String Methods:
+-------------------------
+
+substring(start, end):
+- Extracts characters from 'start' to 'end - 1'
+- Cannot take negative values
+Example:
+---------
+const newName = devName.substring(5, 9);
+console.log(newName);  // Output: "lord"
+
+slice(start, end):
+- Can take negative values
+- Negative indexes count from the end of the string
+Example:
+---------
+const anotherString = devName.slice(-4, 0);
+console.log(anotherString);  // Output: ""
+
+Why empty?
+----------
+slice(-4, 0) → starting from 5th last char to index 0 (which is left-to-right), but since start > end, returns ""
+
+More Common String Methods:
+---------------------------
+- .toLowerCase()         → Converts to lowercase
+- .toUpperCase()         → Converts to uppercase
+- .charAt(index)         → Returns char at index
+- .includes(substring)   → true/false if substring exists
+- .startsWith() / .endsWith()
+- .replace(old, new)
+- .trim() / .trimStart() / .trimEnd()
+- .split(separator)      → Converts string to array
+- .concat(str2)
+- .repeat(n)
+
+Example Usage:
+--------------
+"  hello world  ".trim()         // "hello world"
+"abc def".split(" ")            // ["abc", "def"]
+"Hello".includes("ell")         // true
+"Hello".charAt(1)               // 'e'
+
+String vs String Object:
+------------------------
+- Primitive string: const str = "hello"
+- String object:    const obj = new String("hello")
+- Use primitive strings; avoid using 'new String()' unless needed
+
